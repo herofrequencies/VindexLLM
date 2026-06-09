@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{F8E7D6C5-B4A3-2109-8765-43210FEDCBA9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="demo\VindexLLMTest.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="testbed\VdxTestbed.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="VindexLLMTest">
+        <MSBuild Projects="demo\VindexLLMTest.dproj"/>
+    </Target>
+    <Target Name="VindexLLMTest:Clean">
+        <MSBuild Projects="demo\VindexLLMTest.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VindexLLMTest:Make">
+        <MSBuild Projects="demo\VindexLLMTest.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="VdxTestbed">
+        <MSBuild Projects="testbed\VdxTestbed.dproj"/>
+    </Target>
+    <Target Name="VdxTestbed:Clean">
+        <MSBuild Projects="testbed\VdxTestbed.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="VdxTestbed:Make">
+        <MSBuild Projects="testbed\VdxTestbed.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="VindexLLMTest;VdxTestbed"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="VindexLLMTest:Clean;VdxTestbed:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="VindexLLMTest:Make;VdxTestbed:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

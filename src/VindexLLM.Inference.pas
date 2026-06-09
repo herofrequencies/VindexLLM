@@ -144,7 +144,7 @@ type
     destructor Destroy(); override;
 
     function LoadModel(const AGGUFPath: string;
-      const AMaxContext: Integer = 2048;
+      const AMaxContext: Integer = 8192;
       const ARebuildAt: Integer = -1): Boolean;
 
     procedure SetTokenCallback(const ACallback: TVdxTokenCallback;

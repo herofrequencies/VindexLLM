@@ -125,7 +125,7 @@ begin
   FModelPath := '';
   FEmbedderPath := '';
   FMemoryDbPath := '';
-  FMaxContext := 2048;
+  FMaxContext := 8192;
   FRebuildAt := -1;
   FMaxTokens := 1024;
   FSystemPrompt := '';

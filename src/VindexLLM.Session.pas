@@ -97,7 +97,7 @@ type
       const AModelPath: string;
       const AMemoryDbPath: string;
       const AEmbedderPath: string;
-      const AMaxContext: Integer = 2048;
+      const AMaxContext: Integer = 8192;
       const ARebuildAt: Integer = -1
     ): Boolean;
 

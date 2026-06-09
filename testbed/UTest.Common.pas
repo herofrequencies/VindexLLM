@@ -1,7 +1,7 @@
 {===============================================================================
-  VindexLLM™ - Liberating LLM inference
+  VindexLLMï¿½ - Liberating LLM inference
 
-  Copyright © 2026-present tinyBigGAMES™ LLC
+  Copyright ï¿½ 2026-present tinyBigGAMESï¿½ LLC
   All Rights Reserved.
 
   https://vindexllm.com
@@ -19,16 +19,16 @@ uses
   VindexLLM.TokenWriter;
 
 const
-  // Path to the main inference model — Gemma 3 4B instruction-tuned,
+  // Path to the main inference model ï¿½ Gemma 3 4B instruction-tuned,
   // Handles text generation for chat responses.
-  CModelPath = 'C:\Dev\LLM\GGUF\gemma-3-4b-it-q4_0.gguf';
+  CModelPath = '..\models\gemma-3-4b-it-q4_0.gguf';
 
-  // Path to the embedding model — EmbeddingGemma 300M, Q8_0 quantized.
+  // Path to the embedding model ï¿½ EmbeddingGemma 300M, Q8_0 quantized.
   // Used by TVdxMemory to embed turns for cosine-similarity vector search.
   // Set to '' to disable vector search and use FTS5 keyword search only.
-  CEmbedderPath = 'C:\Dev\LLM\GGUF\embeddinggemma-300m-qat-Q8_0.gguf';
+  CEmbedderPath = '..\models\embeddinggemma-300m-qat-Q8_0.gguf';
 
-  CFuncModelPath = 'C:\Dev\LLM\GGUF\functiongemma-270m-it-q8_0.gguf';
+  CFuncModelPath = '..\models\functiongemma-270m-it-q8_0.gguf';
 
 
   CHiddenDim: UInt32 = 2560;
@@ -51,7 +51,7 @@ uses
   System.Generics.Collections;
 
 // ---------------------------------------------------------------------------
-// StatusCallback — receives progress messages from the inference engine during
+// StatusCallback ï¿½ receives progress messages from the inference engine during
 // model loading (weight uploads, config detection, tokenizer init, VRAM usage)
 // and prints them to the console. Assigned via SetStatusCallback().
 // ---------------------------------------------------------------------------
@@ -61,7 +61,7 @@ begin
 end;
 
 // ---------------------------------------------------------------------------
-// PrintErrors — reads the error collection from the inference engine and prints
+// PrintErrors ï¿½ reads the error collection from the inference engine and prints
 // each error with color-coded severity (HINT=cyan, WARN=yellow, ERROR=red,
 // FATAL=magenta). Called after LoadModel() and Generate() to surface any issues.
 // ---------------------------------------------------------------------------
@@ -119,11 +119,11 @@ begin
 end;
 
 // ---------------------------------------------------------------------------
-// InferenceEventCallback — receives lifecycle events from the inference engine:
-//   ieLoadStart/End      — model loading (weight upload, pipeline creation)
-//   ieUnloadStart/End    — model unloading (GPU resource cleanup)
-//   iePrefillStart/End   — batched prefill of all prompt tokens
-//   ieGenerateStart/End  — autoregressive token-by-token generation
+// InferenceEventCallback ï¿½ receives lifecycle events from the inference engine:
+//   ieLoadStart/End      ï¿½ model loading (weight upload, pipeline creation)
+//   ieUnloadStart/End    ï¿½ model unloading (GPU resource cleanup)
+//   iePrefillStart/End   ï¿½ batched prefill of all prompt tokens
+//   ieGenerateStart/End  ï¿½ autoregressive token-by-token generation
 // Prints each event name in green. Adds a newline before ieGenerateEnd so the
 // stats output doesn't collide with the last streamed token.
 // ---------------------------------------------------------------------------
@@ -137,7 +137,7 @@ begin
 end;
 
 // ---------------------------------------------------------------------------
-// CancelCallback — polled by the inference engine before each layer's forward
+// CancelCallback ï¿½ polled by the inference engine before each layer's forward
 // pass (both during prefill and generation). Returns True if ESC is held,
 // which causes the engine to stop immediately with srCancelled stop reason.
 // This gives the user a way to abort long generations without killing the app.
@@ -148,7 +148,7 @@ begin
 end;
 
 // ---------------------------------------------------------------------------
-// PrintToken — called by the inference engine each time a new token is decoded
+// PrintToken ï¿½ called by the inference engine each time a new token is decoded
 // during generation. Writes the token text to stdout without a newline, giving
 // a streaming "typewriter" effect as the model produces output in real time.
 // ---------------------------------------------------------------------------
@@ -158,7 +158,7 @@ begin
 end;
 
 // ---------------------------------------------------------------------------
-// PrintStats — displays a formatted summary of the last Generate() call:
+// PrintStats ï¿½ displays a formatted summary of the last Generate() call:
 //   - Prefill: how many prompt tokens were processed, time, throughput (tok/s)
 //   - Generation: how many tokens were produced, time, throughput (tok/s)
 //   - TTFT (time to first token), total wall-clock time, stop reason
